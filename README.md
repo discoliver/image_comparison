@@ -1,23 +1,28 @@
 # Image Comparison
 
-## Table of contents .
+## Table of contents  
 
 * [About the Program](#About-the-Program)
 * [Getting Started](#Getting-Started)
-* [How to Use the Program](##ow-to-Use-the-Program)
+* [How to Use the Program](#How-to-Use-the-Program)
 * [Solution Approach](#Solution-Approach)
 * [Maintain the Program](#Maintain-the-Program)
 * [Contribute and Update](#Contribute-and-Update)
 * [Acknowledgments and License](#Acknowledgments-and-License)
 
 ## About the Program
-A program written in Python that compares two images pixel by pixel. The input and output of the program will be in the format of cvs file.  
+A program written in Python that aim to help an internal user to automate this process of comparing two images.   
+
+With a given input cvs file and an output result csv file, the program reduce the tedious manual work by comparing images pixel by pixel.  
+
+The goal of this project is to reduce automate process and boost efficiency by [eliminating toil](https://landing.google.com/sre/sre-book/chapters/eliminating-toil/) and making work interesting.
 
 ## Getting Started - Steps by Steps
 ### Environments
-The program could be run in both Windows and MacOS system, either in Python IDE or Terminal (Commend Prompt in Windows)
+The program could be run in both Windows and MacOS, either in Python IDE or Command Line (Commend Prompt or Terminal).
 
 If you are a Mac user, you can either download [PyCharm](https://www.jetbrains.com/pycharm/download/#section=mac) or running in your terminal directly, followed by the below instructions.  
+
 If you are using Windows, you could do:
 - Download [PyCharm](https://www.jetbrains.com/pycharm/download/#section=mac) - develop, test and run this program
 - Download [Git](https://git-scm.com/download/win), and follow the Mac Instructions
@@ -56,101 +61,19 @@ This repo has also provided an example of this input cvs file **images.csv**, wh
 
 
 ### Result and Test
-After successfully run the program (See [FAQ](#FAQ) for error you might get), you should expect a **result.csv** file in your local directory, which contains the information of 2 images, a similarity score and an elapsed time.
+How do you know if this program works? This project includes a [images](https://github.com/discoliver/image_comparison/tree/master/images) folder, which contains a test set of images, as well as an example of input file, [images.cvs](https://github.com/discoliver/image_comparison/blob/master/images.csv).
 
-Re-run the program will automatically delete the file and regenerate the new result file.
+Therefore, you could simply run the command below to see the test result.  
+```shell
+python3 compare.py images.csv
+```
 
-However well this program perform? The **images.csv** contains a simple test set of images to demonstrate how this program handle each scenario.  
-
-Be aware with the following restriction of the program (which will continue to improve) below:
->
-- This program perform poorly with pictures with similar color histograms but significant structural difference.  
-- ~~This program could only deal with RBG mode image, not greyscale image.~~ This has been fixed by the [latest fix]()
-
-I have included a short test analysis based on test set images. Compared with the actual similarity score and estimated Bjorn Score, the program could predict the similarity with reasonable error while dealing with color histograms, but okay performance with structural difference. (Updated: this has been solved with [SSIM Approach](https://github.com/discoliver/image_comparison_opencv)).    
-
----
-#### Test with pure color, with accurate result
-![Color Comparison](test_result/color.png)  
-
-#### Test with pure color and character, with poor prediction as only focus on color scheme.  
-![Color Mint](test_result/color_mint.png)
-
-#### Test with pure color picture rotation.
-![Color and Rotation](test_result/roration.png)  
-
-#### Test with contrast adjustment and photoshoped picture
-![Contrast Photoshop](test_result/contrast_photoshop.png)  
-
-#### Test with contrast adjustment and photoshoped picture
-![Color Adjustment](test_result/color_adjustment.png)  
+For the test details and method, please visit [Test&Result.md](https://github.com/discoliver/image_comparison/blob/master/Test&Result.md) for more details.
 
 
 ## Solution Approach
-### Backgroud
-Image similarity is popular topics with various techniques to approach. In this particular case, we would like like to help an internal user automate his manual process and reduce the operational cost - or to eliminate toil, from [Google SRE](https://landing.google.com/sre/sre-book/chapters/eliminating-toil/). Therefore, the accuracy, stability , performance and comprehensive documents are important criterias.  
 
-### Thoughts Gathering
-From couple lines of code to well-developed dedicated application product, tools can be used for image similarity are based on some common theory or principle. Starting research on this topic, I found out couple of techniques to accomplish this task.  
-- **Individual Pixel Compare**: Compare RGB value of every individual Pixel.  
-- **Structural Similarity Index (SSIM)**:  Compare group of pixels.  
-- **Comparing histograms**: Examine the distribution of values in each sample.  
-- **Feature matching**: Popular [OpenCV module (features2d)](https://docs.opencv.org/3.0-beta/modules/features2d/doc/features2d.html) to find the homography and overlapping.  
-- **Keypoint Matching**: Focus on the certain parts of an image contains more information than others.  
-- And much more.   
-
-This project starts with the simplest and most straight forward solution, Individual Pixel Compare, based on the several criteria below.  
-1. Accuracy
-2. Simplicity with low development cost
-3. Easy to understand and maintain
-4. Stability without frequent update
-
-However, if more time allowed and more information provided, other solutions could be implement and tailored to this definitely.  
-
-
-### Initial Approach
-The original workflow of this approach demonstrate as below:
-
-1. Import the Image files into `image_list` from cvs.  
-2. For every row of data in cvs (every element in `image_list`), create image `i1` and `i2`.  
-```python
-i1 = Image.open(image_row[0])
-i2 = Image.open(image_row[1])
-```
-3. For each pixel from `i1` and `i2`, subtract the RBG value accordingly and sum up the absolute difference from R, G, B. For example, for the data pair (pixel 1 from `i1` and `i2`): ((176, 207, 148, 255), (255, 255, 255, 255)), we calculate the `dif` value from pixel 1 as below:  
-```matlab
-dif = abs(176 - 255) + abs(207 - 255) + abs(148 - 255)
-```  
-
- The last digital, 255 is The alpha channel which stays with 255 all the time for fully visible.  
-
-4. We record the time `elapsed_time` after complete calculation, and convert `dif` into score of range [0, 1].  
-
-5. Import the data, `dif` and `elapsed_time`into new cvs output file, `result.cvs`.  
-
-### Improving  
-Understanding the [drawbacks](#Advantages-and-Drawbacks)
- of this pixels approach, there are still couple of code refactoring and improvement on the program could be made.  
-
-1. Implement resize function to solve the case that two images have different size and not able to be compared.
-```python
-def resize(i1, i2):
-    if i1.size != i2.size:
-        (width, height) = (i1.width, i1.height)
-        i2 = i2.resize((width, height))
-```  
-
-2. Create user-defined functions for reusable code blocks, which are more organized, easy to maintain and support modular design approach.  
-
-3. Add comments, error catch and debug script for future improvement, development and maintenance.  
-
-
-### Advantages and Drawbacks
-As mentioned earlier, individual pixel comparison approach is relative fast and simple, easy to understand and maintain. However, I do resize there are couple of drawback in this approach.  
-
-1.  Individual pixel comparison ignore the structural histograms and are easily affect by noise and grit.  
-
-2. Images that are rotated, scaled or skewed can be identified as very different as this approach cannot match homography.  
+Please visit [SOLUTION.md](https://github.com/discoliver/image_comparison/blob/master/SOLUTION.md) for the methodology and approach used in this program.  
 
 ## Maintain the Program
 To Maintain this application, please go through this README carefully and [contact me](mailto:b96wang@edu.uwaterloo.ca?subject=[GitHub]%20Source%20Han%20Sans) if you have any question. Additional knowledge transfer session will be hold.
@@ -164,8 +87,6 @@ Ensuring that you have understood the logic of the program is fundamental to mai
 
 ## Contribute and Update
 Your contribution are warmly welcomed to make this project better. Please fork the repository and create pull request if you want. Appreciate anyone to jump in and help out.
-
-Please refer to `CONTRIBUTING.md` (coming) for more details.  
 
 This project does not include much dependency but a few things below could help you maintain the latest version of the application.
 - Contact the author to add the user to the [Github Notification](https://help.github.com/en/articles/about-email-notifications-for-pushes-to-your-repository). When new merge, push or other activities happens you will receive the updates.
@@ -196,7 +117,7 @@ Additionally, a knowledge transfer session and detailed walk through will be pro
 Check the console output to quickly categorize the error either in:  
 - Your system environment, either python or related libraries is setup incorrectly.  
 - Your input csv contains wrong format.  
-- ~~Your image mode is not RGB or the format we do not support.~~ This has been fixed by the [latest fix]()
+- ~~Your image mode is not RGB or the format we do not support.~~ This has been fixed by this [fix](https://github.com/discoliver/image_comparison/commit/830cdd09a56e861a5aa52604328442d17531594e)
 
 ### Can I input cvs files with different format?  
 Unfortunately, you have to follow the format of the provided csv example.
