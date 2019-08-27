@@ -61,19 +61,19 @@ This repo has also provided an example of this input cvs file **images.csv**, wh
 
 
 ### Result and Test
-How do you know if this program works? This project includes a [images](https://github.com/discoliver/image_comparison/tree/master/images) folder, which contains a test set of images, as well as an example of input file, [images.cvs](https://github.com/discoliver/image_comparison/blob/master/images.csv).
+How do you know if this program works? This project includes a [images](https://github.com/discoliver/image_comparison/tree/master/Test/images) folder, which contains a test set of images, as well as an example of input file, [images.cvs](https://github.com/discoliver/image_comparison/blob/master/Test/images.csv).
 
 Therefore, you could simply run the command below to see the test result.  
 ```shell
-python3 compare.py images.csv
+python3 compare.py Test/images.csv
 ```
 
-For the test details and method, please visit [Test&Result.md](https://github.com/discoliver/image_comparison/blob/master/Test&Result.md) for more details.
+For the test details and method, please visit [Test&Result.md](https://github.com/discoliver/image_comparison/blob/master/Docs/Test%26Result.md) for more details.
 
 
 ## Solution Approach
 
-Please visit [SOLUTION.md](https://github.com/discoliver/image_comparison/blob/master/SOLUTION.md) for the methodology and approach used in this program.  
+Please visit [SOLUTION.md](https://github.com/discoliver/image_comparison/blob/master/Docs/SOLUTION.md) for the methodology and approach used in this program.  
 
 ## Maintain the Program
 To Maintain this application, please go through this README carefully and [contact me](mailto:b96wang@edu.uwaterloo.ca?subject=[GitHub]%20Source%20Han%20Sans) if you have any question. Additional knowledge transfer session will be hold.

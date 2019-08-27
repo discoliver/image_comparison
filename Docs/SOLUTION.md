@@ -44,6 +44,11 @@ i2 = Image.open(image_row[1])
 dif = abs(176 - 255) + abs(207 - 255) + abs(148 - 255)
 ```  
 
+For more details, take a look at the data demonstration shown below.  
+---
+#### Test with pure color, with accurate result
+![test data](Docs/data.png)  
+
 The last digital, 255 is The alpha channel which stays with 255 all the time for fully visible.  
 
 4. We record the time `elapsed_time` after complete calculation, and convert `dif` into score of range [0, 1].  
