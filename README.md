@@ -1,6 +1,3 @@
-
-
-
 # Image Comparison
 
 ## Table of contents .
@@ -14,7 +11,7 @@
 * [Acknowledgments and License](#Acknowledgments-and-License)
 
 ## About the Program
-A program in Python that compares two images pixel by pixel. The input and output of the program will be a format cvs file.  
+A program written in Python that compares two images pixel by pixel. The input and output of the program will be in the format of cvs file.  
 
 ## Getting Started - Steps by Steps
 ### Environments
@@ -26,19 +23,15 @@ If you are using Windows, you could do:
 - Download [Git](https://git-scm.com/download/win), and follow the Mac Instructions
 - Running in Command Prompt directly, however you need to run the Windows version of the commands as this docs mainly cover the Linux/MacOS instruction.
 
-
-
 ### Install python  
-To run this program, python 3.0 is required. If you do not have python installed, or wish to updated existing from python 2, you can do it from [download python](https://www.python.org/downloads/).
+To run this program, python 3 is required. If you do not have python installed, or wish to updated existing from python 2, you can do it from [download python](https://www.python.org/downloads/).
 
 ### Install Other Libraries  
 The program requires Python Image Library - PIL. We can easily install  [Pillow](https://pillow.readthedocs.io/en/stable/installation.html), which is the friendly PIL fork by running following command:
 ```shell
-$ pip install Pillow
+$ pip3 install Pillow
 ```
 This is the same command for Windows, MacOS and Linux  Installation
-
-
 
 ## How to Use the Program
 
@@ -50,27 +43,47 @@ git clone https://github.com/discoliver/image_comparsion.git
 
 
 ### Running the Program
-To run this program, simply run the ** compare.py ** script, following a cvs file path which contains pairs of images.
+To run this program, simply run the **compare.py** script, following a cvs file path which contains pairs of images. Run the following command in your Terminal/Command Prompt or Pycharm Terminal.  
 ```shell
-python compare.py filenae.csv
-```
+python3 compare.py filename.csv
+```  
 or
 ```shell
-python compare.py absolute/path/to/yout/filenae.csv
-```
-If you have python 2 co-exist with python 3, you need to run
-```shell
-python3 compare.py filenae.csv
-```
-This repo has also provided an example of this input cvs file **images.csv** , which indicate the format should follow for this program to run.
+python3 compare.py absolute/path/to/your/filename.csv
+```  
+This repo has also provided an example of this input cvs file **images.csv**, which indicates the format should follow to use this program.  
 
-You can also run them in PyCharm as well.
 
 
 ### Result and Test
-After successfully run the program (See FAQ for error you might get), you should expect a **result.csv** file in your repo, which contains the information of 2 images, a similarity score and an elapsed time.
+After successfully run the program (See [FAQ](#FAQ) for error you might get), you should expect a **result.csv** file in your local directory, which contains the information of 2 images, a similarity score and an elapsed time.
 
 Re-run the program will automatically delete the file and regenerate the new result file.
+
+However well this program perform? The **images.csv** contains a simple test set of images to demonstrate how this program handle each scenario.  
+
+Be aware with the following restriction of the program (which will continue to improve) below:
+>
+- This program perform poorly with pictures with similar color histograms but significant structural difference.  
+- This program could only deal with RBG mode image, not greyscale image.  
+
+I have included a short test analysis based on test set images. Compared with the actual similarity score and estimated Bjorn Score, the program could predict the similarity with reasonable error while dealing with color histograms, but okay performance with structural difference. (Updated: this has been solved with [SSIM Approach](https://github.com/discoliver/image_comparison_opencv)).    
+
+---
+#### Test with pure color, with accurate result
+![Color Comparison](test_result/color.ong)  
+
+#### Test with pure color and character, with poor prediction as only focus on color scheme.  
+![Color Mint](test_result/color_mint.ong)
+
+#### Test with pure color picture rotation.
+![Color and Rotation](test_result/roration.ong)  
+
+#### Test with contrast adjustment and photoshoped picture
+![Contrast Photoshop](test_result/contrast_photoshop.png)  
+
+#### Test with contrast adjustment and photoshoped picture
+![Color Adjustment](test_result/color_adjustment.png)  
 
 
 ## Solution Approach
@@ -106,9 +119,11 @@ i2 = Image.open(image_row[1])
 ```
 3. For each pixel from `i1` and `i2`, subtract the RBG value accordingly and sum up the absolute difference from R, G, B.  
 For example, for the data pair (pixel 1 from `i1` and `i2`): ((176, 207, 148, 255), (255, 255, 255, 255)), we calculate the `dif` value from pixel 1 as below:  
-> dif = abs(176 - 255) + abs(207 - 255) + abs(148 - 255)
+```matlab
+dif = abs(176 - 255) + abs(207 - 255) + abs(148 - 255)
+```  
 
-The last digital, 255 is The alpha channel which stays with 255 all the time for fully visible.  
+ The last digital, 255 is The alpha channel which stays with 255 all the time for fully visible.  
 
 4. We record the time `elapsed_time` after complete calculation, and convert `dif` into score of range [0, 1].  
 
@@ -139,17 +154,17 @@ As mentioned earlier, individual pixel comparison approach is relative fast and 
 2. Images that are rotated, scaled or skewed can be indentified as very different as this appraoch cannot match homography.  
 
 ## Maintain the Program
-To Maintain this application, please go through this README carefully and  contact me if you have any question. Additional knowledge transfer session will be hold.
+To Maintain this application, please go through this README carefully and [contact me](mailto:b96wang@edu.uwaterloo.ca?subject=[GitHub]%20Source%20Han%20Sans) if you have any question. Additional knowledge transfer session will be hold.
 
-Ensure you have understood the logic of the program is fundamental to maintain this project, however, there are couple tips can help as well.  
+Ensuring that you have understood the logic of the program is fundamental to maintain this project, however, there are couple tips can help as well.  
 
 1. Read error log - details catch error and debug output is written in the script.
 2. Check your environment - although this program does not require many dependencies, you still have to check you have correct version of python, and other libraries installed.  
 3. Always test it when you contribute this program; Work in specific topic branches and keep the commit history clean, with proper tag if necessary.  
-4. Refer to FAQ session for common question.
+4. Refer to [FAQ](#FAQ) session for common question.
 
 ## Contribute and Update
-Your contribution  are warmly welcome to make this project better. Please fork the repository and create pull request if you want. Appreciate anyone to jump in and help out.
+Your contribution are warmly welcomed to make this project better. Please fork the repository and create pull request if you want. Appreciate anyone to jump in and help out.
 
 Please refer to `CONTRIBUTING.md` (coming) for more details.  
 
@@ -158,10 +173,8 @@ This project does not include much dependency but a few things below could help 
 - Ensure you have the latest version of pillow
 - Ensure your Python is up-to-date
 
-
 ## Acknowledgments and License
 There are a few helpful examples and research help to shape this project, and they have demonstrated the different perspectives and methods to accomplish the test. Here are some of good references.  
-
 
 [Image Module](https://pillow.readthedocs.io/en/stable/reference/Image.html), The Image module provides a class with the same name which is used to represent a PIL image.  
 [Rosetta Code](https://rosettacode.org/wiki/Percentage_difference_between_images#Python), Percentage difference between images .  
