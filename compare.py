@@ -6,8 +6,8 @@ import sys
 
 #Remove the old result file if exists, otherwise will let user know there is no result file in current folder
 def remove_old_result():
-    if os.path.exists('result.csv'):
-        os.remove('result.csv')
+    if os.path.exists('Test/result.csv'):
+        os.remove('Test/result.csv')
     else:
         print("This is the first time you running this tool or you have deleted the previous result file")
         return;
@@ -26,7 +26,7 @@ def read_input_file():
 
 #Write the headline of the result file
 def write_headline(c1, c2, c3, c4):
-    with open('result.csv', 'w') as csvFile:
+    with open('Test/result.csv', 'w') as csvFile:
         writer = csv.writer(csvFile)
         writer.writerow([c1, c2, c3, c4])
 
@@ -45,18 +45,17 @@ def calculate_diff(i1, new_i2):
 
 #Write a row of compare result into result.cvs
 def write_output(image_row):
-    with open('result.csv', 'a') as csvFile:
+    with open('Test/result.csv', 'a') as csvFile:
         writer = csv.writer(csvFile)
         writer.writerow(image_row)
     csvFile.close()
 
 #Resize the image to match the size of the first image.
 def resize(i1, i2):
-    if i1.size != i2.size:
-        #print("size is different, resize to match the first image.")
-        (width, height) = (i1.width, i1.height)
-        i2 = i2.resize((width, height))
-        return i2
+    #print("size is different, resize to match the first image.")
+    (width, height) = (i1.width, i1.height)
+    i2 = i2.resize((width, height))
+    return i2
 
 def main():
     counter = 1
@@ -69,21 +68,23 @@ def main():
 
     for image_row in image_list:
 
-        start_time = time.time()
-
         i1 = Image.open(image_row[0])
         i2 = Image.open(image_row[1])
 
         #debug
         #print("image 1 size is ", i1.size, ", mode is ", i1.mode, ", band is ", i1.getbands(), "with total pixels of", total_pixels )
         #print("image 2 size is ", new_i2.size, ", mode is ", new_i2.mode, ", band is ", new_i2.getbands(), "with total pixels of", total_pixels )
-
-        new_i2 = resize(i1, i2)
+        if i1.size != i2.size:
+            new_i2 = resize(i1, i2)
 
         print('Operating the image pair:', counter)
+
+        start_time = time.time()
+
         dif_percentage = calculate_diff(i1, new_i2)
 
         elapsed_time = time.time() - start_time
+
         image_row.insert(2, dif_percentage)
         image_row.insert(3, elapsed_time)
 

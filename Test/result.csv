@@ -1,0 +1,14 @@
+image1,image2,similar,elapsed
+Test/images/big_green.png,Test/images/small_green.png,0.008393740498095844,2.424025774002075
+Test/images/red.png,Test/images/green.png,0.4212469520304098,0.6979589462280273
+Test/images/red.png,Test/images/red_green.png,0.28820963683933176,0.7018630504608154
+Test/images/red.png,Test/images/crop_small_mint.png,0.511632222860466,0.8471710681915283
+Test/images/black.png,Test/images/white.png,0.8020218679372061,0.2915310859680176
+Test/images/left_dog.png,Test/images/right_dog.png,0.20495604308591184,0.3755030632019043
+Test/images/bridge.png,Test/images/bridge_contrast.png,0.17786008413225132,1.0294592380523682
+Test/images/bridge_contrast.png,Test/images/bridge_modified.png,0.18917819986458378,1.039031982421875
+Test/images/ld_black.png,Test/images/ld_color.png,0.1951817290763735,0.1995079517364502
+Test/images/ld_black.png,Test/images/ld_color_rotated.png,0.22106777968235386,0.2313699722290039
+Test/images/red.png,Test/images/small_mint.png,0.47984010571593505,0.6461391448974609
+Test/images/big_green.png,Test/images/small_mint.png,0.2660023940472101,2.267703056335449
+Test/images/ld_black.png,Test/images/ld_grey.png,0.1988277194791681,0.1971137523651123
