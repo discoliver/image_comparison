@@ -1,5 +1,5 @@
 # Result and Test
-After successfully run the program (See [FAQ](#FAQ) for error you might get), you should expect a **result.csv** file in your local directory, which contains the information of 2 images, a similarity score and an elapsed time.
+After successfully run the program (See [FAQ](https://github.com/discoliver/image_comparison#faq) for error you might get), you should expect a **result.csv** file in your local directory, which contains the information of 2 images, a similarity score and an elapsed time.
 
 Re-run the program will automatically delete the file and regenerate the new result file.
 
@@ -14,7 +14,7 @@ I have included a short test analysis based on test set images. Compared with th
 
 ---
 #### Test with pure color, with accurate result
-![Color Comparison](Test/test_result/color.png)  
+![Color Comparison](/test_result/color.png)  
 
 #### Test with pure color and character, with poor prediction as only focus on color scheme.  
 ![Color Mint](Test/test_result/color_mint.png)
@@ -26,4 +26,4 @@ I have included a short test analysis based on test set images. Compared with th
 ![Contrast Photoshop](Test/test_result/contrast_photoshop.png)  
 
 #### Test with contrast adjustment and photoshoped picture
-![Color Adjustment](Test/test_result/color_adjustment.png)  
+![Color Adjustment](Test/xtest_result/color_adjustment.png)  

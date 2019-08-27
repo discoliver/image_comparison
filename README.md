@@ -3,7 +3,7 @@
 ## Table of contents  
 
 * [About the Program](#About-the-Program)
-* [Getting Started](#Getting-Started)
+* [Getting Started](#Getting Started)
 * [How to Use the Program](#How-to-Use-the-Program)
 * [Solution Approach](#Solution-Approach)
 * [Maintain the Program](#Maintain-the-Program)
@@ -17,7 +17,7 @@ With a given input cvs file and an output result csv file, the program reduce th
 
 The goal of this project is to reduce automate process and boost efficiency by [eliminating toil](https://landing.google.com/sre/sre-book/chapters/eliminating-toil/) and making work interesting.
 
-## Getting Started - Steps by Steps
+## Getting Started
 ### Environments
 The program could be run in both Windows and MacOS, either in Python IDE or Command Line (Commend Prompt or Terminal).
 
