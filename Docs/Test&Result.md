@@ -14,16 +14,16 @@ I have included a short test analysis based on test set images. Compared with th
 
 ---
 #### Test with pure color, with accurate result
-![Color Comparison](/test_result/color.png)  
+![Color Comparison](../Test/test_result/color.png)  
 
 #### Test with pure color and character, with poor prediction as only focus on color scheme.  
-![Color Mint](Test/test_result/color_mint.png)
+![Color Mint](../Test/test_result/color_mint.png)
 
 #### Test with pure color picture rotation.
-![Color and Rotation](Test/test_result/roration.png)  
+![Color and Rotation](../Test/test_result/rotation.png)  
 
 #### Test with contrast adjustment and photoshoped picture
-![Contrast Photoshop](Test/test_result/contrast_photoshop.png)  
+![Contrast Photoshop](../Test/test_result/contrast_photoshop.png)  
 
 #### Test with contrast adjustment and photoshoped picture
-![Color Adjustment](Test/xtest_result/color_adjustment.png)  
+![Color Adjustment](../Test/test_result/color_adjustment.png)  

@@ -5,16 +5,17 @@
 
 * [Background](#Background)
 * [Thoughts Gathering](#Thoughts-Gathering)
-* [Initial Approach](##Initial-Approach)
+* [Initial Approach](#Initial-Approach)
 * [Improving](#Improving)
 * [Advantages and Drawbacks](#Advantages-and-Drawbacks)
 
 
 ## Background
-Image similarity is popular topics with various techniques to approach. In this particular case, we would like like to help an internal user automate his manual process and reduce the operational cost - or to eliminate toil, from [Google SRE](https://landing.google.com/sre/sre-book/chapters/eliminating-toil/). Therefore, the accuracy, stability , performance and comprehensive documents are important criterias.  
+Image similard
+Image similarity is popular topics with various techniques to approach. In this particular case, we would like like to help an internal user automate his manual process and reduce the operational cost - or to eliminate toil, from [Google SRE](https://landing.google.com/sre/sre-book/chapters/eliminating-toil/). Therefore, the accuracy, stability , performance and comprehensive documents are important criteria.  
 
 ## Thoughts Gathering
-From couple lines of code to well-developed dedicated application product, tools can be used for image similarity are based on some common theory or principle. Starting research on this topic, I found out couple of techniques to accomplish this task.  
+From a couple lines of code to well-developed dedicated application product, tools can be used for image similarity are based on some common theory or principle. Starting research on this topic, I found out couple of techniques to accomplish this task.  
 - **Individual Pixel Compare**: Compare RGB value of every individual Pixel.  
 - **Structural Similarity Index (SSIM)**:  Compare group of pixels.  
 - **Comparing histograms**: Examine the distribution of values in each sample.  
@@ -24,14 +25,14 @@ From couple lines of code to well-developed dedicated application product, tools
 
 This project starts with the simplest and most straight forward solution, Individual Pixel Compare, based on the several criteria below.  
 1. Accuracy
-2. Simplicity with low development cost
+2. Simplicity with a low development cost
 3. Easy to understand and maintain
 4. Stability without frequent update
 
-However, if more time allowed and more information provided, other solutions could be implement and tailored to this definitely.  
+However, if more time allowed and more information provided, other solutions could be implemented and tailored to this definitely.  
 
 ## Initial Approach
-The original workflow of this approach demonstrate as below:
+The original workflow of this approach demonstrates as below:
 
 1. Import the Image files into `image_list` from cvs.  
 2. For every row of data in cvs (every element in `image_list`), create image `i1` and `i2`.  
@@ -73,8 +74,8 @@ def resize(i1, i2):
 
 
 ## Advantages and Drawbacks
-As mentioned earlier, individual pixel comparison approach is relative fast and simple, easy to understand and maintain. However, I do resize there are couple of drawback in this approach.  
+As mentioned earlier, individual pixel comparison approach is relatively fast and simple, easy to understand and maintain. However, I do resize there are couple of drawback in this approach.  
 
-1.  Individual pixel comparison ignore the structural histograms and are easily affect by noise and grit.  
+1.  Individual pixel comparison ignores the structural histograms and are easily affected by noise and grit.  
 
 2. Images that are rotated, scaled or skewed can be identified as very different as this approach cannot match homography.  
