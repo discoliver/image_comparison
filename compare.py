@@ -31,8 +31,15 @@ def write_headline(c1, c2, c3, c4):
         writer.writerow([c1, c2, c3, c4])
 
 #Calculate the sum difference of R,G,B value in each pixel.
-def calculate_diff(pairs, total_pixels):
-    dif = sum(abs(color1 - color2) for pixel1, pixel2 in pairs for color1, color2 in zip(pixel1, pixel2))
+def calculate_diff(i1, new_i2):
+
+    pairs = zip(i1.getdata(), new_i2.getdata())
+    total_pixels = len(list(i1.getdata()))
+
+    if len(i1.getbands()) == 1:
+        dif = sum(abs(p1 - p2) for p1, p2 in pairs)
+    else:
+        dif = sum(abs(color1 - color2) for pixel1, pixel2 in pairs for color1, color2 in zip(pixel1, pixel2))
     dif_percentage = dif / (255.0 * 3 * total_pixels)
     return dif_percentage
 
@@ -72,11 +79,9 @@ def main():
         #print("image 2 size is ", new_i2.size, ", mode is ", new_i2.mode, ", band is ", new_i2.getbands(), "with total pixels of", total_pixels )
 
         new_i2 = resize(i1, i2)
-        pairs = zip(i1.getdata(), new_i2.getdata())
-        total_pixels = len(list(i1.getdata()))
 
         print('Operating the image pair:', counter)
-        dif_percentage = calculate_diff(pairs, total_pixels)
+        dif_percentage = calculate_diff(i1, new_i2)
 
         elapsed_time = time.time() - start_time
         image_row.insert(2, dif_percentage)

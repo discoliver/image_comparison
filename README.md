@@ -65,19 +65,19 @@ However well this program perform? The **images.csv** contains a simple test set
 Be aware with the following restriction of the program (which will continue to improve) below:
 >
 - This program perform poorly with pictures with similar color histograms but significant structural difference.  
-- This program could only deal with RBG mode image, not greyscale image.  
+- ~~This program could only deal with RBG mode image, not greyscale image.~~ This has been fixed by the [latest fix]()
 
 I have included a short test analysis based on test set images. Compared with the actual similarity score and estimated Bjorn Score, the program could predict the similarity with reasonable error while dealing with color histograms, but okay performance with structural difference. (Updated: this has been solved with [SSIM Approach](https://github.com/discoliver/image_comparison_opencv)).    
 
 ---
 #### Test with pure color, with accurate result
-![Color Comparison](test_result/color.ong)  
+![Color Comparison](test_result/color.png)  
 
 #### Test with pure color and character, with poor prediction as only focus on color scheme.  
-![Color Mint](test_result/color_mint.ong)
+![Color Mint](test_result/color_mint.png)
 
 #### Test with pure color picture rotation.
-![Color and Rotation](test_result/roration.ong)  
+![Color and Rotation](test_result/roration.png)  
 
 #### Test with contrast adjustment and photoshoped picture
 ![Contrast Photoshop](test_result/contrast_photoshop.png)  
@@ -117,8 +117,7 @@ The original workflow of this approach demonstrate as below:
 i1 = Image.open(image_row[0])
 i2 = Image.open(image_row[1])
 ```
-3. For each pixel from `i1` and `i2`, subtract the RBG value accordingly and sum up the absolute difference from R, G, B.  
-For example, for the data pair (pixel 1 from `i1` and `i2`): ((176, 207, 148, 255), (255, 255, 255, 255)), we calculate the `dif` value from pixel 1 as below:  
+3. For each pixel from `i1` and `i2`, subtract the RBG value accordingly and sum up the absolute difference from R, G, B. For example, for the data pair (pixel 1 from `i1` and `i2`): ((176, 207, 148, 255), (255, 255, 255, 255)), we calculate the `dif` value from pixel 1 as below:  
 ```matlab
 dif = abs(176 - 255) + abs(207 - 255) + abs(148 - 255)
 ```  
@@ -147,11 +146,11 @@ def resize(i1, i2):
 
 
 ### Advantages and Drawbacks
-As mentioned earlier, individual pixel comparison approach is relative fast and simple, easy to understand and maintain. However, I do reaize there are couple of drawback in this approach.  
+As mentioned earlier, individual pixel comparison approach is relative fast and simple, easy to understand and maintain. However, I do resize there are couple of drawback in this approach.  
 
 1.  Individual pixel comparison ignore the structural histograms and are easily affect by noise and grit.  
 
-2. Images that are rotated, scaled or skewed can be indentified as very different as this appraoch cannot match homography.  
+2. Images that are rotated, scaled or skewed can be identified as very different as this approach cannot match homography.  
 
 ## Maintain the Program
 To Maintain this application, please go through this README carefully and [contact me](mailto:b96wang@edu.uwaterloo.ca?subject=[GitHub]%20Source%20Han%20Sans) if you have any question. Additional knowledge transfer session will be hold.
@@ -169,7 +168,7 @@ Your contribution are warmly welcomed to make this project better. Please fork t
 Please refer to `CONTRIBUTING.md` (coming) for more details.  
 
 This project does not include much dependency but a few things below could help you maintain the latest version of the application.
-- Github Notification when updates or new pull request has been merged (coming)
+- Contact the author to add the user to the [Github Notification](https://help.github.com/en/articles/about-email-notifications-for-pushes-to-your-repository). When new merge, push or other activities happens you will receive the updates.
 - Ensure you have the latest version of pillow
 - Ensure your Python is up-to-date
 
@@ -197,7 +196,7 @@ Additionally, a knowledge transfer session and detailed walk through will be pro
 Check the console output to quickly categorize the error either in:  
 - Your system environment, either python or related libraries is setup incorrectly.  
 - Your input csv contains wrong format.  
-- Your image mode is not RGB or the format we do not support.  
+- ~~Your image mode is not RGB or the format we do not support.~~ This has been fixed by the [latest fix]()
 
 ### Can I input cvs files with different format?  
 Unfortunately, you have to follow the format of the provided csv example.

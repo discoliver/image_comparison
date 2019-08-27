@@ -1,0 +1,14 @@
+image1,image2,similar,elapsed
+/Users/boranwang/Documents/github/image_comparison/images/big_green.png,/Users/boranwang/Documents/github/image_comparison/images/small_green.png,0.008393740498095844,2.018263101577759
+/Users/boranwang/Documents/github/image_comparison/images/red.png,/Users/boranwang/Documents/github/image_comparison/images/green.png,0.4212469520304098,0.6437339782714844
+/Users/boranwang/Documents/github/image_comparison/images/red.png,/Users/boranwang/Documents/github/image_comparison/images/red_green.png,0.28820963683933176,0.613487958908081
+/Users/boranwang/Documents/github/image_comparison/images/red.png,/Users/boranwang/Documents/github/image_comparison/images/crop_small_mint.png,0.511632222860466,0.608191967010498
+/Users/boranwang/Documents/github/image_comparison/images/black.png,/Users/boranwang/Documents/github/image_comparison/images/white.png,0.8020218679372061,0.2510111331939697
+/Users/boranwang/Documents/github/image_comparison/images/left_dog.png,/Users/boranwang/Documents/github/image_comparison/images/right_dog.png,0.20495604308591184,0.3441457748413086
+/Users/boranwang/Documents/github/image_comparison/images/bridge.png,/Users/boranwang/Documents/github/image_comparison/images/bridge_contrast.png,0.17786008413225132,0.9462130069732666
+/Users/boranwang/Documents/github/image_comparison/images/bridge_contrast.png,/Users/boranwang/Documents/github/image_comparison/images/bridge_modified.png,0.18917819986458378,0.9547150135040283
+/Users/boranwang/Documents/github/image_comparison/images/ld_black.png,/Users/boranwang/Documents/github/image_comparison/images/ld_color.png,0.1951817290763735,0.20560312271118164
+/Users/boranwang/Documents/github/image_comparison/images/ld_black.png,/Users/boranwang/Documents/github/image_comparison/images/ld_color_rotated.png,0.22106777968235386,0.2158219814300537
+/Users/boranwang/Documents/github/image_comparison/images/red.png,/Users/boranwang/Documents/github/image_comparison/images/small_mint.png,0.47984010571593505,0.6691420078277588
+/Users/boranwang/Documents/github/image_comparison/images/big_green.png,/Users/boranwang/Documents/github/image_comparison/images/small_mint.png,0.2660023940472101,2.1401567459106445
+/Users/boranwang/Documents/github/image_comparison/images/ld_black.png,/Users/boranwang/Documents/github/image_comparison/images/ld_grey.png,0.1988277194791681,0.21122503280639648
