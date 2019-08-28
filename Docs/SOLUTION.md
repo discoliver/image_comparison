@@ -15,7 +15,7 @@ Image similarity is popular topics with various techniques to approach. In this 
 
 This automation could reduce repetitive work and lower the operational cost - or we can say to eliminate toil, from [Google SRE](https://landing.google.com/sre/sre-book/chapters/eliminating-toil/). 
 
-With a clear request from the user, this project will read a cvs input file with pairs of images and output a result file with similarity score. Considering that it is an internal automation tool, therefore, the **accuracy, stability, performance and comprehensive documents** are important criteria.  
+With a clear request from the user, this project will read a csv input file with pairs of images and output a result file with similarity score. Considering that it is an internal automation tool, therefore, the **accuracy, stability, performance and comprehensive documents** are important criteria.  
 
 ## Thoughts Gathering
 From couple of lines of code to well-developed dedicated product, there are some common theories and methodologies for this image similarity comparison tools. Starting research on this topic, I found out a couple of techniques to accomplish this task. Here are some examples:  
@@ -56,11 +56,12 @@ This example below demonstrate the pixel substraction.
 For more details, take a look at the data demonstration shown below.  
 ![test data](data.png)  
 
-Note: the last digital, 255 is The alpha channel which stays with 255 all the time for fully visible.  
+Note: the last digital, 255 is The alpha transparency mask which stays with 255 all the time for fully visible.  More details from [here](https://pillow.readthedocs.io/en/5.1.x/handbook/concepts.html#concept-modes).  
+ 
 
 4. We record the time `elapsed_time` after complete calculation, and convert `dif` into score of range [0, 1].  
 
-5. Write the data, `dif` and `elapsed_time`into new cvs output file: `result.cvs`.  
+5. Write the data, `dif` and `elapsed_time`into new csv output file: `result.csv`.  
 
 ## Improving  
 Understanding the [drawbacks](#Advantages-and-Drawbacks)

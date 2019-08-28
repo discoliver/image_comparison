@@ -13,7 +13,7 @@
 ## About the Program
 A program written in Python that aims to help an internal user to automate the manual process of comparing two images.   
 
-With a given input cvs file containing image pairs, and produced a result csv file including similarity score, the program reduces the tedious repetitive work by comparing the images pixel by pixel.  
+With a given input csv file containing image pairs, and produced a result csv file including similarity score, the program reduces the tedious repetitive work by comparing the images pixel by pixel.  
 
 The goal of this project is to automate the manual process, reduce operational cost,  boost efficiency and make work interesting. Please see more details on [eliminating toil by Google SRE](https://landing.google.com/sre/sre-book/chapters/eliminating-toil/)
 
@@ -63,23 +63,25 @@ git clone https://github.com/discoliver/image_comparsion.git
 
 
 ### Running the Program
-To run this program, simply run the **compare.py** script, following a cvs file path which contains pairs of images. Run the following command in your Terminal/Command Prompt or Pycharm Terminal.  
+To run this program, simply run the **compare.py** script, following a csv file path which contains pairs of images. Run the following command in your Terminal/Command Prompt or Pycharm Terminal.  
 ```shell
 python3 compare.py filename.csv
 ```  
-If you have your own input cvs already
+If you have your own input csv already
 ```shell
 python3 compare.py absolute/path/to/your/filename.csv
 ```  
-This repo has also provided an example of this input cvs file **images.csv**, which indicates the format should follow to use this program.  If you want to run this test, you could do the command below:  
+This repo has also provided an example of this input csv file **images.csv**, which indicates the format should follow to use this program.  If you want to run this test, you could do the command below:  
 ```shell
 python3 compare.py images.csv
 ```  
+You don't have to edit the file path in **images.csv** as it is pre-configured with the files in **Test/images** folder.  
+
 Knowledge transfer session and a demo will be provided to the user and all questions could be answered. Also feel free to [contact me](mailto:b96wang@edu.uwaterloo.ca?subject=[GitHub]%20Source%20Han%20Sans) if you have additional questions.
 
 
 ### Result and Test
-How do you know if this program works? This project includes an [images](https://github.com/discoliver/image_comparison/tree/master/Test/images) folder, which contains a test set of images, as well as an example of the input file, [images.cvs](https://github.com/discoliver/image_comparison/blob/master/Test/images.csv).
+How do you know if this program works? This project includes an [images](https://github.com/discoliver/image_comparison/tree/master/Test/images) folder, which contains a test set of images, as well as an example of the input file, [images.csv](https://github.com/discoliver/image_comparison/blob/master/Test/images.csv).
 
 Therefore, you could simply run the command below to see the test result.  
 ```shell
@@ -95,14 +97,13 @@ Please visit [SOLUTION.md](https://github.com/discoliver/image_comparison/blob/m
 
 ## Maintain the Program
 
-One of the initial goals is to make this project less dependent on a low effort to maintain. In this case, this project dose not require much human effort to update and maintain as it involves minimal dependency.
-
+To make this project less dependent on a low effort to maintain, this project only build on a few stable library without frequent updates.
 
 Go through this README carefully and ensure that you have understood the logic of the program are fundamental to maintain this project. Also I will provide support with demo & knowledge transfer session and [email contact](mailto:b96wang@edu.uwaterloo.ca?subject=[GitHub]%20Source%20Han%20Sans).  
-
+  
 If you would like to continue to build on this project and make improvements, please check [how to contribute this project](#Contribute-and-Update).
 
-There are couple tips can help troubleshoot as well.  
+There are couple tips if you encounter any problems.  
 
 1. Read error log - details catch errors and debug output is written in the script.
 2. Check your environment - although this program does not require many dependencies, you still have to check you have the correct version of python, and other libraries installed.  
@@ -154,7 +155,7 @@ Check the console output to quickly categorize the error either in:
 - ~~Your image mode is not RGB or the format we do not support.~~ This has been fixed by this [fix](https://github.com/discoliver/image_comparison/commit/830cdd09a56e861a5aa52604328442d17531594e)
 - Google the error message should give you the best answer.
 
-### Can I input cvs files with a different format?  
+### Can I input csv files with a different format?  
 Unfortunately, you have to follow the format of the provided csv example. However, this can be quickly changed if the original request changes.
 
 ### Does this program restrict to MacOS?  
