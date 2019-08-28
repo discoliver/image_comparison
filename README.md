@@ -33,7 +33,7 @@ You could also set up your virtual environment for your python project. You coul
 
 
 ### Install python  
-To run this program, python 3 is required. If can download [python 3](https://www.python.org/downloads/) or [update from existing python 2] (https://docs.python.org/3/howto/pyporting.html).  
+To run this program, python 3 is required. If can download [python 3](https://www.python.org/downloads/) or [update from existing python 2](https://docs.python.org/3/howto/pyporting.html).  
 
 For MacOS user (or Windows user with bash), the following command could be useful to install python with [brew](https://docs.brew.sh/Homebrew-and-Python) and check the version you have.
 ```shell
@@ -99,7 +99,7 @@ Please visit [SOLUTION.md](https://github.com/discoliver/image_comparison/blob/m
 
 To make this project less dependent on a low effort to maintain, this project only build on a few stable library without frequent updates.
 
-Go through this README carefully and ensure that you have understood the logic of the program are fundamental to maintain this project. Also I will provide support with demo & knowledge transfer session and [email contact](mailto:b96wang@edu.uwaterloo.ca?subject=[GitHub]%20Source%20Han%20Sans).  
+Go through this README carefully and ensure that you have understood the logic of the program are fundamental to maintain this project. Also I will provide support with demo & knowledge transfer session and [email me](mailto:b96wang@edu.uwaterloo.ca?subject=[GitHub]%20Source%20Han%20Sans).  
   
 If you would like to continue to build on this project and make improvements, please check [how to contribute this project](#Contribute-and-Update).
 
