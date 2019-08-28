@@ -35,4 +35,4 @@ As a result, **the program could predict the similarity correctly with a reasona
 There are other approaches to validate if the program works. Before running the test case, I have broken the code into small segment to ensure the functionality and no side effects.  
 Also I have intentionally try to break the code (like add wrong file path) to check the stability, build error catch and improve the resiliency.  
 More testing image can be introduced to examine the different presepcitve of image comparison, and we can always compare the result with 3rd party [tools](https://windowsreport.com/photo-comparison-software/).  
-Additionally, we can work with Bjorn or the team to determine the rating criteria, and then improve the algorithm based upon that.  
+Additionally, we can work with Bjorn or the team to determine the rating criteria, and then improve the algorithm based upon that.   t
