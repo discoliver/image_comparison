@@ -38,6 +38,7 @@ def calculate_diff(i1, new_i2):
     # deal with the both cases with picture in RGB mode and black/white mode.
     if len(i1.getbands()) == 1:
         dif = sum(abs(p1 - p2) for p1, p2 in pairs)
+        # as greyscale mode only have one value, it should not multiple by 3 anymore
         dif_percentage = dif / (255.0 * total_pixels)
     else:
         dif = sum(abs(color1 - color2) for pixel1, pixel2 in pairs for color1, color2 in zip(pixel1, pixel2))
