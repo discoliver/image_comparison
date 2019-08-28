@@ -10,7 +10,11 @@ Be aware of the following restriction of the program (which will continue to imp
 - This program performs poorly with pictures with similar color histograms but significant structural difference.  
 - ~~This program could only deal with RBG mode image, not the greyscale image.~~ This has been fixed by this [fix](https://github.com/discoliver/image_comparison/commit/830cdd09a56e861a5aa52604328442d17531594e)
 
-I have included a short test analysis based on test set images. Compared with the actual similarity score and estimated Bjorn Score, the program could predict the similarity with a reasonable error while dealing with color histograms, but okay performance with structural differences. (Updated: this has been solved with [SSIM Approach](https://github.com/discoliver/image_comparison_opencv)).    
+I have included a short test analysis based on test set images. Compared with the actual `similarity score` and `estimated Bjorn Score`, I calculated the error as below:
+```shell
+error =  100 * abs(estimated Bjorn Score - similarity score ) / (1 - 0)
+```
+As a result, **the program could predict the similarity correctly with a reasonable error (around 10%)**. However, The program generate bigger error while dealing with structural differences. (Updated: this has been solved with [SSIM Approach](https://github.com/discoliver/image_comparison_opencv)).      
 
 ---
 #### Test with pure color, with accurate result
@@ -27,3 +31,8 @@ I have included a short test analysis based on test set images. Compared with th
 
 #### Test with contrast adjustment and photoshoped picture
 ![Color Adjustment](../Test/test_result/color_adjustment.png)  
+
+There are other approaches to validate if the program works. Before running the test case, I have broken the code into small segment to ensure the functionality and no side effects.  
+Also I have intentionally try to break the code (like add wrong file path) to check the stability, build error catch and improve the resiliency.  
+More testing image can be introduced to examine the different presepcitve of image comparison, and we can always compare the result with 3rd party [tools](https://windowsreport.com/photo-comparison-software/).  
+Additionally, we can work with Bjorn or the team to determine the rating criteria, and then improve the algorithm based upon that.  
